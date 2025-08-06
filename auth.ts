@@ -5,7 +5,6 @@ import { prisma } from "@/db/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
 import type { NextAuthConfig } from "next-auth";
-import { PrismaClient } from "./lib/generated/prisma";
 
 export const config = {
   pages: {
@@ -27,8 +26,6 @@ export const config = {
         if (credentials === null) {
           return null;
         }
-
-        const prisma = new PrismaClient();
 
         // Find user in database
         const user = await prisma.user.findFirst({
