@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { getProductBySlug } from "@/lib/actions/product.actions";
-import { Product } from "@/lib/generated/prisma";
 import { notFound } from "next/navigation";
 
 const ProductDetailsPage = async (props: {
@@ -13,7 +12,7 @@ const ProductDetailsPage = async (props: {
 }) => {
   const { slug } = await props.params;
 
-  const product: Product | null = await getProductBySlug(slug);
+  const product: any = await getProductBySlug(slug);
   if (!product) notFound();
 
   return (
